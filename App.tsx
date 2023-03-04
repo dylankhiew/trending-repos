@@ -16,6 +16,7 @@ export default function App() {
     "Roboto-Bold": FONTS.ROBOTO.BOLD,
     "Roboto-Medium": FONTS.ROBOTO.MEDIUM,
     "Roboto-Regular": FONTS.ROBOTO.REGULAR,
+    "PingFanSC-Regular": FONTS.PINGFANGSC.REGULAR,
   });
 
   if (!fontsLoaded) {
