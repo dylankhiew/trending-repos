@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-namespace app {
+declare namespace app {
   interface RepositoryAuthor {
     username: string;
     url: string;
