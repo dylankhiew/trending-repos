@@ -10,6 +10,8 @@ export default function AccordionHead({
   repository,
 }: AccordionHeadProps): JSX.Element {
   const { username, repositoryName, builtBy } = repository;
+
+  // It is safe to use this method as all repo has at least one author
   const avatar = builtBy[0].avatar;
 
   return (
