@@ -3,9 +3,11 @@ import { StatusBar } from "expo-status-bar";
 import { useEffect, useState } from "react";
 import { Platform, ScrollView, StyleSheet, UIManager } from "react-native";
 import { AccordionList } from "react-native-accordion-list-view";
+import { useSelector } from "react-redux";
 
 import { NavigationStackParamList } from "../../../App";
 import { IMAGES } from "../../../assets/IMAGES";
+import { updateRepos } from "../../actions/reposActions";
 import AccordionBody from "../../components/AccordionBody";
 import AccordionHead from "../../components/AccordionHead";
 import AccordionHeadSkeleton from "../../components/AccordionHeadSkeleton";
@@ -15,6 +17,8 @@ import SkeletonLoadingModule from "../../components/SkeletonLoadingModule";
 import { COLOR } from "../../constants/colorConstants";
 import { SPACING } from "../../constants/spacingConstants";
 import { TRENDING_SCREEN_CONFIG } from "../../constants/trendingScreenConstants";
+import { trendingReposSelector } from "../../selectors/reposSelectors";
+import { useReduxDispatch } from "../../state/store";
 
 type TrendingScreenProps = NativeStackScreenProps<
   NavigationStackParamList,
@@ -22,10 +26,12 @@ type TrendingScreenProps = NativeStackScreenProps<
 >;
 
 export default function TrendingScreen({ navigation }: TrendingScreenProps) {
-  const [repositories, setRepositories] =
-    useState<app.GetTrendingRepoResponse>();
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [isError, setIsError] = useState<boolean>(false);
+
+  const repositories = useSelector(trendingReposSelector);
+
+  const dispatch = useReduxDispatch();
 
   useEffect(() => {
     navigation.setOptions({
@@ -51,7 +57,7 @@ export default function TrendingScreen({ navigation }: TrendingScreenProps) {
       .then((response) => response.json())
       .then((actualData) => {
         setIsLoading(false);
-        setRepositories(actualData);
+        dispatch(updateRepos(actualData));
       })
       .catch(() => {
         setIsLoading(false);
