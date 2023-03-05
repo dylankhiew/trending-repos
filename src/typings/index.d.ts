@@ -1,5 +1,14 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 declare namespace app {
+  interface State {
+    repos: ReposState;
+  }
+
+  interface ReposState {
+    trendingRepos: RepositoryItem[];
+    lastUpdated: string;
+  }
+
   interface RepositoryAuthor {
     username: string;
     url: string;
