@@ -14,7 +14,7 @@ import { shouldFetchReposSelector } from "../selectors/reposSelectors";
 
 function* updateReposSaga(action: ReturnType<typeof requestRepoUpdate>) {
   const shouldFetchRepos: boolean = yield select(shouldFetchReposSelector);
-  const shouldForceUpdate = action.payload.forceUpdate;
+  const shouldForceUpdate = action.payload.shouldForceUpdate;
 
   if (shouldFetchRepos || shouldForceUpdate) {
     yield put(setIsLoading(true));
@@ -24,6 +24,7 @@ function* updateReposSaga(action: ReturnType<typeof requestRepoUpdate>) {
         API_ENDPOINTS.TRENDING_URL
       );
       yield put(updateRepos(repos));
+      yield put(setIsError(false));
       yield put(setLastUpdated(moment().toISOString()));
       yield put(setIsLoading(false));
     } catch {

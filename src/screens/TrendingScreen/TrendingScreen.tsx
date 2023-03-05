@@ -51,7 +51,7 @@ export default function TrendingScreen({ navigation }: TrendingScreenProps) {
   useEffect(() => {
     dispatch(
       requestRepoUpdate({
-        forceUpdate: false,
+        shouldForceUpdate: false,
       })
     );
 
@@ -88,7 +88,7 @@ export default function TrendingScreen({ navigation }: TrendingScreenProps) {
     if (offsetY < -TRENDING_SCREEN_CONFIG.REFRESH_OFFSET) {
       dispatch(
         requestRepoUpdate({
-          forceUpdate: true,
+          shouldForceUpdate: true,
         })
       );
       setOffsetY(0);
@@ -128,7 +128,7 @@ export default function TrendingScreen({ navigation }: TrendingScreenProps) {
         onPress={() => {
           dispatch(
             requestRepoUpdate({
-              forceUpdate: false,
+              shouldForceUpdate: true,
             })
           );
         }}
