@@ -60,7 +60,6 @@ export default function TrendingScreen({ navigation }: TrendingScreenProps) {
   };
 
   useEffect(() => {
-    // setIsError(true);
     fetchTrendingRepos();
   }, []);
 
@@ -73,7 +72,6 @@ export default function TrendingScreen({ navigation }: TrendingScreenProps) {
   };
 
   if (isLoading) {
-    // TO-DO: Clean up
     return (
       <SkeletonLoadingModule
         component={<AccordionHeadSkeleton />}
