@@ -32,5 +32,7 @@ declare namespace app {
     builtBy: RepositoryAuthor[];
   }
 
-  type GetTrendingRepoResponse = RepositoryItem[];
+  interface RequestRepoUpdatePayload {
+    forceUpdate: booelean;
+  }
 }

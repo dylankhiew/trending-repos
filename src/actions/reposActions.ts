@@ -8,7 +8,8 @@ export const SET_IS_ERROR = "SET_IS_ERROR";
 
 export const SET_LAST_UPDATED = "SET_LAST_UPDATED";
 
-const requestRepoUpdate = createAction(REQUEST_REPO_UPDATE);
+const requestRepoUpdate =
+  createAction<app.RequestRepoUpdatePayload>(REQUEST_REPO_UPDATE);
 const updateRepos = createAction<app.RepositoryItem[]>(UPDATE_REPOS);
 
 const setIsLoading = createAction<boolean>(SET_IS_LOADING);

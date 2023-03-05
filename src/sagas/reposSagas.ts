@@ -1,27 +1,37 @@
-import { call, put, takeEvery } from "@redux-saga/core/effects";
+import { call, put, select, takeEvery } from "@redux-saga/core/effects";
+import moment from "moment";
 
 import { getApi } from "./apiSagas";
 import {
   requestRepoUpdate,
   setIsError,
   setIsLoading,
+  setLastUpdated,
   updateRepos,
 } from "../actions/reposActions";
 import { API_ENDPOINTS } from "../constants/apiConstants";
+import { shouldFetchReposSelector } from "../selectors/reposSelectors";
 
-function* updateReposSaga() {
-  // TO-DO: Do Should update check here
-  yield put(setIsLoading(true));
-  try {
-    const repos: app.RepositoryItem[] = yield call(
-      getApi,
-      API_ENDPOINTS.TRENDING_URL
-    );
-    yield put(updateRepos(repos));
-    yield put(setIsLoading(false));
-  } catch {
-    yield put(setIsLoading(false));
-    yield put(setIsError(true));
+function* updateReposSaga(action: ReturnType<typeof requestRepoUpdate>) {
+  const shouldFetchRepos: boolean = yield select(shouldFetchReposSelector);
+  const shouldForceUpdate = action.payload.forceUpdate;
+
+  if (shouldFetchRepos || shouldForceUpdate) {
+    yield put(setIsLoading(true));
+    try {
+      const repos: app.RepositoryItem[] = yield call(
+        getApi,
+        API_ENDPOINTS.TRENDING_URL
+      );
+      yield put(updateRepos(repos));
+      yield put(setLastUpdated(moment().toISOString()));
+      yield put(setIsLoading(false));
+    } catch {
+      yield put(setIsLoading(false));
+      yield put(setIsError(true));
+    }
+  } else {
+    // Do nothing for now
   }
 }
 
