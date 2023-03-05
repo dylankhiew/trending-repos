@@ -14,7 +14,10 @@ import { AccordionList } from "react-native-accordion-list-view";
 
 import { NavigationStackParamList } from "../../../App";
 import { IMAGES } from "../../../assets/IMAGES";
-import Text from "../../components/Text";
+import AccordionBody from "../../components/AccordionBody";
+import AccordionHead from "../../components/AccordionHead";
+import AccordionHeadSkeleton from "../../components/AccordionHeadSkeleton";
+import { COLOR } from "../../constants/colorConstants";
 import { SPACING } from "../../constants/spacingConstants";
 
 type TrendingScreenProps = NativeStackScreenProps<
@@ -70,11 +73,20 @@ export default function TrendingScreen({ navigation }: TrendingScreenProps) {
   }, []);
 
   if (isLoading) {
-    // TO-DO: Show loader
+    // TO-DO: Clean up
     return (
-      <View style={styles.container}>
-        <Text>Loading</Text>
-      </View>
+      <ScrollView contentContainerStyle={styles.container}>
+        <AccordionHeadSkeleton />
+        <AccordionHeadSkeleton />
+        <AccordionHeadSkeleton />
+        <AccordionHeadSkeleton />
+        <AccordionHeadSkeleton />
+        <AccordionHeadSkeleton />
+        <AccordionHeadSkeleton />
+        <AccordionHeadSkeleton />
+        <AccordionHeadSkeleton />
+        <AccordionHeadSkeleton />
+      </ScrollView>
     );
   }
 
@@ -87,54 +99,12 @@ export default function TrendingScreen({ navigation }: TrendingScreenProps) {
     );
   }
 
-  const renderAccordionTitle = (repo: app.RepositoryItem) => {
-    const { username, repositoryName, builtBy } = repo;
-    const avatar = builtBy[0].avatar;
-
-    return (
-      <View style={styles.accordionContainer}>
-        <Image source={{ uri: avatar }} style={styles.accordionAvatar} />
-        <View style={styles.accordionTitleArea}>
-          <Text style={styles.accordionHeader} regular>
-            {username}
-          </Text>
-          <Text style={styles.accordionTitle} medium>
-            {repositoryName}
-          </Text>
-        </View>
-      </View>
-    );
+  const renderAccordionHead = (repo: app.RepositoryItem) => {
+    return <AccordionHead repository={repo} />;
   };
 
   const renderAccordionBody = (repo: app.RepositoryItem) => {
-    const { description, url, language, starsSince, forks, languageColor } =
-      repo;
-    const bodyDescription = `${description ?? ""} (${url})`;
-
-    return (
-      <View style={styles.accordionBodyContainer}>
-        <Text style={styles.accordionDescription}>{bodyDescription}</Text>
-        <View style={styles.accordionFooter}>
-          <View style={styles.bottomFooter}>
-            <View
-              style={[
-                styles.languageCircle,
-                { backgroundColor: languageColor },
-              ]}
-            />
-            <Text regular>{language}</Text>
-          </View>
-          <View style={styles.bottomFooter}>
-            <Image source={IMAGES.ICON.STAR} style={styles.bottomFooterIcon} />
-            <Text regular>{starsSince}</Text>
-          </View>
-          <View style={styles.bottomFooter}>
-            <Image source={IMAGES.ICON.FORK} style={styles.bottomFooterIcon} />
-            <Text regular>{forks}</Text>
-          </View>
-        </View>
-      </View>
-    );
+    return <AccordionBody repository={repo} />;
   };
 
   return (
@@ -143,10 +113,10 @@ export default function TrendingScreen({ navigation }: TrendingScreenProps) {
       <AccordionList
         containerItemStyle={styles.accordionItem}
         data={repositories ?? []}
-        customTitle={renderAccordionTitle}
+        customTitle={renderAccordionHead}
         customBody={renderAccordionBody}
-        style={{ width: "100%", margin: 0 }}
-        animationDuration={400}
+        style={styles.accordionList}
+        animationDuration={200}
         expandMultiple={false}
         customIcon={() => <></>}
       />
@@ -171,69 +141,14 @@ const styles = StyleSheet.create({
     width: 24,
     height: 24,
   },
-  accordionContainer: {
-    display: "flex",
-    flexDirection: "row",
-    flex: 1,
-    marginTop: SPACING.S_2,
-    marginBottom: SPACING.S_2,
+  accordionList: {
+    width: "100%",
+    margin: 0,
   },
   accordionItem: {
     margin: 0,
-    borderColor: "#E8E8E8",
+    borderColor: COLOR.GRAY,
     borderBottomWidth: 1,
     borderRadius: 0,
-  },
-  accordionAvatar: {
-    height: 32,
-    width: 32,
-    borderRadius: 50,
-    marginHorizontal: SPACING.S_4,
-  },
-  accordionTitleArea: {
-    flexDirection: "column",
-  },
-  accordionHeader: {
-    fontSize: 12,
-    marginBottom: SPACING.S_0,
-  },
-  accordionTitle: {
-    fontSize: 15,
-  },
-  accordionBodyContainer: {
-    display: "flex",
-    flexDirection: "column",
-    flex: 1,
-    margin: 0,
-    // Offspace which accounts for avatar and its margin
-    marginLeft: 32 + SPACING.S_4 + SPACING.S_4,
-    marginTop: SPACING.S_2,
-    marginBottom: SPACING.S_2,
-  },
-  accordionFooter: {
-    flex: 1,
-    flexDirection: "row",
-    marginTop: SPACING.S_2,
-  },
-  languageCircle: {
-    height: 12,
-    width: 12,
-    borderRadius: 12,
-    marginRight: SPACING.S_0,
-  },
-  bottomFooter: {
-    flexDirection: "row",
-    justifyContent: "center",
-    alignContent: "center",
-    alignItems: "center",
-    marginRight: SPACING.S_3,
-  },
-  bottomFooterIcon: {
-    height: 16,
-    width: 16,
-  },
-  accordionDescription: {
-    fontFamily: "PingFangSC-Regular",
-    fontSize: 12,
   },
 });
