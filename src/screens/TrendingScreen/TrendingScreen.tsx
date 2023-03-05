@@ -1,12 +1,14 @@
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { StatusBar } from "expo-status-bar";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import {
   Platform,
-  RefreshControl,
+  Image,
   StyleSheet,
   UIManager,
   View,
+  NativeScrollEvent,
+  NativeSyntheticEvent,
 } from "react-native";
 import { AccordionList } from "react-native-accordion-list-view";
 import { useSelector } from "react-redux";
@@ -42,6 +44,10 @@ export default function TrendingScreen({ navigation }: TrendingScreenProps) {
 
   const dispatch = useReduxDispatch();
 
+  const [offsetY, setOffsetY] = useState(0);
+
+  const [shouldShowRefreshIcon, setShouldShowRefreshIcon] = useState(false);
+
   useEffect(() => {
     dispatch(requestRepoUpdate());
 
@@ -60,12 +66,43 @@ export default function TrendingScreen({ navigation }: TrendingScreenProps) {
     }
   }, []);
 
+  useEffect(() => {
+    if (offsetY < -TRENDING_SCREEN_CONFIG.REFRESH_OFFSET) {
+      setShouldShowRefreshIcon(true);
+    } else {
+      setShouldShowRefreshIcon(false);
+    }
+  }, [offsetY]);
+
+  function onScroll({ nativeEvent }: NativeSyntheticEvent<NativeScrollEvent>) {
+    const { contentOffset } = nativeEvent;
+    const { y } = contentOffset;
+    setOffsetY(y);
+  }
+
+  const onRelease = () => {
+    if (offsetY < -TRENDING_SCREEN_CONFIG.REFRESH_OFFSET) {
+      dispatch(requestRepoUpdate());
+      setOffsetY(0);
+    }
+  };
+
   const renderAccordionHead = (repo: app.RepositoryItem) => {
     return <AccordionHead repository={repo} />;
   };
 
   const renderAccordionBody = (repo: app.RepositoryItem) => {
     return <AccordionBody repository={repo} />;
+  };
+
+  const renderRefreshIcon = () => {
+    if (shouldShowRefreshIcon) {
+      return (
+        <View style={styles.refreshIconContainer}>
+          <Image source={IMAGES.ICON.REFRESH} style={styles.refreshIcon} />
+        </View>
+      );
+    }
   };
 
   if (isLoading) {
@@ -89,18 +126,13 @@ export default function TrendingScreen({ navigation }: TrendingScreenProps) {
     );
   }
 
-  const refreshControl = (
-    <RefreshControl
-      refreshing={isLoading}
-      onRefresh={() => dispatch(requestRepoUpdate())}
-    />
-  );
-
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
+      {renderRefreshIcon()}
       <AccordionList
-        refreshControl={refreshControl}
+        onScroll={onScroll}
+        onResponderRelease={onRelease}
         containerItemStyle={styles.accordionItem}
         data={repositories ?? []}
         customTitle={renderAccordionHead}
@@ -127,7 +159,30 @@ const styles = StyleSheet.create({
     marginVertical: 14,
     fontFamily: "Roboto-Medium",
   },
-
+  refreshIconContainer: {
+    position: 'absolute',
+    top: 30,
+    height: 40,
+    width: 40,
+    backgroundColor: 'white',
+    justifyContent: 'center',
+    alignContent: 'center',
+    alignItems: 'center',
+    borderRadius: 40,
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 5,
+    },
+    shadowOpacity: 0.44,
+    shadowRadius: 5,
+    elevation: 16,
+    zIndex: 10,
+  },
+  refreshIcon: {
+    height: 25,
+    width: 25,
+  },
   accordionList: {
     width: "100%",
     margin: 0,
