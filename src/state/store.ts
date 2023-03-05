@@ -5,6 +5,7 @@ import { persistReducer, persistStore } from "redux-persist";
 import createSagaMiddleware from "redux-saga";
 
 import { rootReducer } from "./rootReducer";
+import { rootSaga } from "../sagas/rootSagas";
 
 const persistConfig = {
   key: "root",
@@ -19,6 +20,8 @@ export const store = configureStore({
   reducer: persistedReducer,
   middleware: [sagaMiddleware],
 });
+
+sagaMiddleware.run(rootSaga);
 
 export const persistor = persistStore(store);
 
