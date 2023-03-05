@@ -12,25 +12,25 @@ import {
 import { AccordionList } from "react-native-accordion-list-view";
 import { useSelector } from "react-redux";
 
-import { NavigationStackParamList } from "../../../App";
-import { IMAGES } from "../../../assets/IMAGES";
-import { requestRepoUpdate } from "../../actions/reposActions";
-import AccordionBody from "../../components/AccordionBody";
-import AccordionHead from "../../components/AccordionHead";
-import AccordionHeadSkeleton from "../../components/AccordionHeadSkeleton";
-import ErrorModule from "../../components/ErrorModule";
-import HeaderButton from "../../components/HeaderButton";
-import RefreshIcon from "../../components/RefreshIcon";
-import SkeletonLoadingModule from "../../components/SkeletonLoadingModule";
-import { COLOR } from "../../constants/colorConstants";
-import { SPACING } from "../../constants/spacingConstants";
-import { TRENDING_SCREEN_CONFIG } from "../../constants/trendingScreenConstants";
+import { NavigationStackParamList } from "../../App";
+import { IMAGES } from "../../assets/IMAGES";
+import { requestRepoUpdate } from "../actions/reposActions";
+import AccordionBody from "../components/AccordionBody";
+import AccordionHead from "../components/AccordionHead";
+import AccordionHeadSkeleton from "../components/AccordionHeadSkeleton";
+import ErrorModule from "../components/ErrorModule";
+import HeaderButton from "../components/HeaderButton";
+import RefreshIcon from "../components/RefreshIcon";
+import SkeletonLoadingModule from "../components/SkeletonLoadingModule";
+import { COLOR } from "../constants/colorConstants";
+import { SPACING } from "../constants/spacingConstants";
+import { TRENDING_SCREEN_CONFIG } from "../constants/trendingScreenConstants";
 import {
   repoIsErrorSelector,
   repoIsLoadingSelector,
   trendingReposSelector,
-} from "../../selectors/reposSelectors";
-import { useReduxDispatch } from "../../state/store";
+} from "../selectors/reposSelectors";
+import { useReduxDispatch } from "../state/store";
 
 type TrendingScreenProps = NativeStackScreenProps<
   NavigationStackParamList,

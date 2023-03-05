@@ -5,7 +5,7 @@ import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
 
 import { FONTS } from "./assets/FONTS";
-import TrendingScreen from "./src/screens/TrendingScreen/TrendingScreen";
+import TrendingScreen from "./src/screens/TrendingScreen";
 import { persistor, store } from "./src/state/store";
 
 export type NavigationStackParamList = {
