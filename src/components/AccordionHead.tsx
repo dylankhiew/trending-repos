@@ -1,6 +1,5 @@
-import { Image, StyleSheet, View } from "react-native";
+import { Image, StyleSheet, Text, View } from "react-native";
 
-import Text from "./Text";
 import { SPACING } from "../constants/spacingConstants";
 
 interface AccordionHeadProps {
@@ -17,12 +16,8 @@ export default function AccordionHead({
     <View style={styles.accordionContainer}>
       <Image source={{ uri: avatar }} style={styles.accordionAvatar} />
       <View style={styles.accordionTitleArea}>
-        <Text style={styles.accordionHeader} regular>
-          {username}
-        </Text>
-        <Text style={styles.accordionTitle} medium>
-          {repositoryName}
-        </Text>
+        <Text style={styles.accordionHeader}>{username}</Text>
+        <Text style={styles.accordionTitle}>{repositoryName}</Text>
       </View>
     </View>
   );
@@ -48,8 +43,10 @@ const styles = StyleSheet.create({
   accordionHeader: {
     fontSize: 12,
     marginBottom: SPACING.S_0,
+    fontFamily: "Roboto-Regular",
   },
   accordionTitle: {
     fontSize: 15,
+    fontFamily: "Roboto-Medium",
   },
 });

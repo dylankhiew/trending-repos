@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
     display: "flex",
     flexDirection: "row",
     flex: 1,
-    borderBottomColor: COLOR.GRAY,
+    borderBottomColor: COLOR.GRAY100,
     borderBottomWidth: 1,
     marginTop: 21,
   },
@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
     width: 32,
     borderRadius: 50,
     marginHorizontal: SPACING.S_4,
-    backgroundColor: COLOR.GRAY,
+    backgroundColor: COLOR.GRAY100,
   },
   accordionTitleArea: {
     flexDirection: "column",
@@ -39,13 +39,13 @@ const styles = StyleSheet.create({
     marginBottom: SPACING.S_3,
     height: 10,
     width: 100,
-    backgroundColor: COLOR.GRAY,
+    backgroundColor: COLOR.GRAY100,
     borderRadius: 5,
   },
   accordionTitle: {
     width: 260,
     height: 10,
-    backgroundColor: COLOR.GRAY,
+    backgroundColor: COLOR.GRAY100,
     borderRadius: 5,
   },
 });

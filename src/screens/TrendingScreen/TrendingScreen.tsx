@@ -8,7 +8,6 @@ import {
   StyleSheet,
   TouchableOpacity,
   UIManager,
-  View,
 } from "react-native";
 import { AccordionList } from "react-native-accordion-list-view";
 
@@ -17,6 +16,7 @@ import { IMAGES } from "../../../assets/IMAGES";
 import AccordionBody from "../../components/AccordionBody";
 import AccordionHead from "../../components/AccordionHead";
 import AccordionHeadSkeleton from "../../components/AccordionHeadSkeleton";
+import ErrorModule from "../../components/ErrorModule";
 import { COLOR } from "../../constants/colorConstants";
 import { SPACING } from "../../constants/spacingConstants";
 
@@ -72,6 +72,14 @@ export default function TrendingScreen({ navigation }: TrendingScreenProps) {
     fetchTrendingRepos();
   }, []);
 
+  const renderAccordionHead = (repo: app.RepositoryItem) => {
+    return <AccordionHead repository={repo} />;
+  };
+
+  const renderAccordionBody = (repo: app.RepositoryItem) => {
+    return <AccordionBody repository={repo} />;
+  };
+
   if (isLoading) {
     // TO-DO: Clean up
     return (
@@ -91,21 +99,16 @@ export default function TrendingScreen({ navigation }: TrendingScreenProps) {
   }
 
   if (isError) {
-    // TO-DO: Show error
     return (
-      <View style={styles.container}>
-        <Image source={IMAGES.BACKGROUND.NO_INTERNET_CONNECTION} />
-      </View>
+      <ErrorModule
+        title="Something went wrong.."
+        imageSource={IMAGES.BACKGROUND.NO_INTERNET_CONNECTION}
+        subtitle="An alien is probably blocking your signal."
+        buttonTitle="Retry"
+        onPress={() => fetchTrendingRepos()}
+      />
     );
   }
-
-  const renderAccordionHead = (repo: app.RepositoryItem) => {
-    return <AccordionHead repository={repo} />;
-  };
-
-  const renderAccordionBody = (repo: app.RepositoryItem) => {
-    return <AccordionBody repository={repo} />;
-  };
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
@@ -147,7 +150,7 @@ const styles = StyleSheet.create({
   },
   accordionItem: {
     margin: 0,
-    borderColor: COLOR.GRAY,
+    borderColor: COLOR.GRAY100,
     borderBottomWidth: 1,
     borderRadius: 0,
   },

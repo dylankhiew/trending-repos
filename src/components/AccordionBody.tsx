@@ -1,6 +1,5 @@
-import { Image, StyleSheet, View } from "react-native";
+import { Image, StyleSheet, Text, View } from "react-native";
 
-import Text from "./Text";
 import { IMAGES } from "../../assets/IMAGES";
 import { COLOR } from "../constants/colorConstants";
 import { SPACING } from "../constants/spacingConstants";
@@ -10,7 +9,7 @@ interface AccordionBodyProps {
 }
 
 export default function AccordionHead({
-  repository, 
+  repository,
 }: AccordionBodyProps): JSX.Element {
   const { description, url, language, starsSince, forks, languageColor } =
     repository;
@@ -24,21 +23,15 @@ export default function AccordionHead({
           <View
             style={[styles.languageCircle, { backgroundColor: languageColor }]}
           />
-          <Text regular style={styles.bottomFooterText}>
-            {language}
-          </Text>
+          <Text style={styles.bottomFooterText}>{language}</Text>
         </View>
         <View style={styles.bottomFooter}>
           <Image source={IMAGES.ICON.STAR} style={styles.bottomFooterIcon} />
-          <Text regular style={styles.bottomFooterText}>
-            {starsSince}
-          </Text>
+          <Text style={styles.bottomFooterText}>{starsSince}</Text>
         </View>
         <View style={styles.bottomFooter}>
           <Image source={IMAGES.ICON.FORK} style={styles.bottomFooterIcon} />
-          <Text regular style={styles.bottomFooterText}>
-            {forks}
-          </Text>
+          <Text style={styles.bottomFooterText}>{forks}</Text>
         </View>
       </View>
     </View>
@@ -78,12 +71,13 @@ const styles = StyleSheet.create({
     width: 16,
   },
   bottomFooterText: {
-    color: COLOR.DARK_GRAY,
+    color: COLOR.GRAY300,
+    fontFamily: "Roboto-Regular",
   },
   accordionDescription: {
     fontFamily: "PingFangSC-Regular",
     fontSize: 12,
     marginRight: SPACING.S_4,
-    color: COLOR.DARK_GRAY,
+    color: COLOR.GRAY300,
   },
 });
