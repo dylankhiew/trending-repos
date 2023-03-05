@@ -16,3 +16,13 @@ export const repoLastUpdatedSelector = createSelector(
   reposStateSelector,
   (repos) => repos.lastUpdated
 );
+
+export const repoIsLoadingSelector = createSelector(
+  reposStateSelector,
+  (repos) => repos.isLoading
+);
+
+export const repoIsErrorSelector = createSelector(
+  reposStateSelector,
+  (repos) => repos.isError
+);

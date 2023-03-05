@@ -1,10 +1,17 @@
 import { createReducer, PayloadAction } from "@reduxjs/toolkit";
 
-import { setLastUpdated, updateRepos } from "../actions/reposActions";
+import {
+  setIsError,
+  setIsLoading,
+  setLastUpdated,
+  updateRepos,
+} from "../actions/reposActions";
 
 const INITIAL_REPOS_STATE: app.ReposState = {
   trendingRepos: [],
   lastUpdated: "",
+  isLoading: false,
+  isError: false,
 };
 
 export const reposReducers = createReducer(INITIAL_REPOS_STATE, (builder) =>
@@ -22,6 +29,18 @@ export const reposReducers = createReducer(INITIAL_REPOS_STATE, (builder) =>
       return {
         ...state,
         lastUpdated: action.payload,
+      };
+    })
+    .addCase(setIsLoading, (state, action: PayloadAction<boolean>) => {
+      return {
+        ...state,
+        isLoading: action.payload,
+      };
+    })
+    .addCase(setIsError, (state, action: PayloadAction<boolean>) => {
+      return {
+        ...state,
+        isError: action.payload,
       };
     })
 );
