@@ -7,7 +7,7 @@ import { useSelector } from "react-redux";
 
 import { NavigationStackParamList } from "../../../App";
 import { IMAGES } from "../../../assets/IMAGES";
-import { updateRepos } from "../../actions/reposActions";
+import { requestRepoUpdate } from "../../actions/reposActions";
 import AccordionBody from "../../components/AccordionBody";
 import AccordionHead from "../../components/AccordionHead";
 import AccordionHeadSkeleton from "../../components/AccordionHeadSkeleton";
@@ -49,24 +49,9 @@ export default function TrendingScreen({ navigation }: TrendingScreenProps) {
     }
   }, []);
 
-  const fetchTrendingRepos = () => {
-    setIsLoading(true);
-    const url =
-      "https://demo-github-trending.moneymatch.technology:8443/repositories";
-    fetch(url)
-      .then((response) => response.json())
-      .then((actualData) => {
-        setIsLoading(false);
-        dispatch(updateRepos(actualData));
-      })
-      .catch(() => {
-        setIsLoading(false);
-        setIsError(true);
-      });
-  };
-
   useEffect(() => {
-    fetchTrendingRepos();
+    // fetchTrendingRepos();
+    dispatch(requestRepoUpdate());
   }, []);
 
   const renderAccordionHead = (repo: app.RepositoryItem) => {
@@ -93,7 +78,7 @@ export default function TrendingScreen({ navigation }: TrendingScreenProps) {
         imageSource={IMAGES.BACKGROUND.NO_INTERNET_CONNECTION}
         subtitle="An alien is probably blocking your signal."
         buttonTitle="Retry"
-        onPress={() => fetchTrendingRepos()}
+        onPress={() => dispatch(requestRepoUpdate())}
       />
     );
   }
