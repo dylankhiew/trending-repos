@@ -21,6 +21,7 @@ import AccordionHead from "../../components/AccordionHead";
 import AccordionHeadSkeleton from "../../components/AccordionHeadSkeleton";
 import ErrorModule from "../../components/ErrorModule";
 import HeaderButton from "../../components/HeaderButton";
+import RefreshIcon from "../../components/RefreshIcon";
 import SkeletonLoadingModule from "../../components/SkeletonLoadingModule";
 import { COLOR } from "../../constants/colorConstants";
 import { SPACING } from "../../constants/spacingConstants";
@@ -49,7 +50,11 @@ export default function TrendingScreen({ navigation }: TrendingScreenProps) {
   const [shouldShowRefreshIcon, setShouldShowRefreshIcon] = useState(false);
 
   useEffect(() => {
-    dispatch(requestRepoUpdate());
+    dispatch(
+      requestRepoUpdate({
+        forceUpdate: false,
+      })
+    );
 
     navigation.setOptions({
       headerRight: () => (
@@ -82,7 +87,11 @@ export default function TrendingScreen({ navigation }: TrendingScreenProps) {
 
   const onRelease = () => {
     if (offsetY < -TRENDING_SCREEN_CONFIG.REFRESH_OFFSET) {
-      dispatch(requestRepoUpdate());
+      dispatch(
+        requestRepoUpdate({
+          forceUpdate: true,
+        })
+      );
       setOffsetY(0);
     }
   };
@@ -97,11 +106,7 @@ export default function TrendingScreen({ navigation }: TrendingScreenProps) {
 
   const renderRefreshIcon = () => {
     if (shouldShowRefreshIcon) {
-      return (
-        <View style={styles.refreshIconContainer}>
-          <Image source={IMAGES.ICON.REFRESH} style={styles.refreshIcon} />
-        </View>
-      );
+      return <RefreshIcon />;
     }
   };
 
@@ -121,7 +126,13 @@ export default function TrendingScreen({ navigation }: TrendingScreenProps) {
         imageSource={IMAGES.BACKGROUND.NO_INTERNET_CONNECTION}
         subtitle="An alien is probably blocking your signal."
         buttonTitle="Retry"
-        onPress={() => dispatch(requestRepoUpdate())}
+        onPress={() => {
+          dispatch(
+            requestRepoUpdate({
+              forceUpdate: false,
+            })
+          );
+        }}
       />
     );
   }
@@ -158,30 +169,6 @@ const styles = StyleSheet.create({
     fontSize: 21,
     marginVertical: 14,
     fontFamily: "Roboto-Medium",
-  },
-  refreshIconContainer: {
-    position: 'absolute',
-    top: 30,
-    height: 40,
-    width: 40,
-    backgroundColor: 'white',
-    justifyContent: 'center',
-    alignContent: 'center',
-    alignItems: 'center',
-    borderRadius: 40,
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 5,
-    },
-    shadowOpacity: 0.44,
-    shadowRadius: 5,
-    elevation: 16,
-    zIndex: 10,
-  },
-  refreshIcon: {
-    height: 25,
-    width: 25,
   },
   accordionList: {
     width: "100%",
