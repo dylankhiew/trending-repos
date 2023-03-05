@@ -46,7 +46,7 @@ export default function ErrorModule({
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: COLOR.OFF_WHITE,
     alignItems: "center",
     justifyContent: "center",
     paddingHorizontal: 48,
@@ -58,6 +58,7 @@ const styles = StyleSheet.create({
     marginTop: 24,
     fontSize: 18,
     fontFamily: "Roboto-Bold",
+    color: COLOR.GRAY400,
   },
   subtitle: {
     marginTop: 8,

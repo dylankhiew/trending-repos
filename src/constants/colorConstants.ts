@@ -2,6 +2,8 @@ export const COLOR = {
   GRAY100: "#E8E8E8",
   GRAY200: "#929292",
   GRAY300: "#52575C",
+  GRAY400: "#4A4A4A",
   WHITE: "#FFFFFF",
+  OFF_WHITE: "#FAFAFA",
   GREEN: "#31B057",
 };
