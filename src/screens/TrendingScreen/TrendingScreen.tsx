@@ -1,7 +1,13 @@
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { StatusBar } from "expo-status-bar";
-import { useEffect, useState } from "react";
-import { Platform, ScrollView, StyleSheet, UIManager } from "react-native";
+import { useEffect } from "react";
+import {
+  Platform,
+  RefreshControl,
+  StyleSheet,
+  UIManager,
+  View,
+} from "react-native";
 import { AccordionList } from "react-native-accordion-list-view";
 import { useSelector } from "react-redux";
 
@@ -17,7 +23,11 @@ import SkeletonLoadingModule from "../../components/SkeletonLoadingModule";
 import { COLOR } from "../../constants/colorConstants";
 import { SPACING } from "../../constants/spacingConstants";
 import { TRENDING_SCREEN_CONFIG } from "../../constants/trendingScreenConstants";
-import { trendingReposSelector } from "../../selectors/reposSelectors";
+import {
+  repoIsErrorSelector,
+  repoIsLoadingSelector,
+  trendingReposSelector,
+} from "../../selectors/reposSelectors";
 import { useReduxDispatch } from "../../state/store";
 
 type TrendingScreenProps = NativeStackScreenProps<
@@ -26,14 +36,15 @@ type TrendingScreenProps = NativeStackScreenProps<
 >;
 
 export default function TrendingScreen({ navigation }: TrendingScreenProps) {
-  const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [isError, setIsError] = useState<boolean>(false);
-
   const repositories = useSelector(trendingReposSelector);
+  const isLoading = useSelector(repoIsLoadingSelector);
+  const isError = useSelector(repoIsErrorSelector);
 
   const dispatch = useReduxDispatch();
 
   useEffect(() => {
+    dispatch(requestRepoUpdate());
+
     navigation.setOptions({
       headerRight: () => (
         <HeaderButton imageSource={IMAGES.ICON.MORE_OPTIONS} />
@@ -47,11 +58,6 @@ export default function TrendingScreen({ navigation }: TrendingScreenProps) {
         UIManager.setLayoutAnimationEnabledExperimental(true);
       }
     }
-  }, []);
-
-  useEffect(() => {
-    // fetchTrendingRepos();
-    dispatch(requestRepoUpdate());
   }, []);
 
   const renderAccordionHead = (repo: app.RepositoryItem) => {
@@ -83,10 +89,18 @@ export default function TrendingScreen({ navigation }: TrendingScreenProps) {
     );
   }
 
+  const refreshControl = (
+    <RefreshControl
+      refreshing={isLoading}
+      onRefresh={() => dispatch(requestRepoUpdate())}
+    />
+  );
+
   return (
-    <ScrollView contentContainerStyle={styles.container}>
+    <View style={styles.container}>
       <StatusBar style="auto" />
       <AccordionList
+        refreshControl={refreshControl}
         containerItemStyle={styles.accordionItem}
         data={repositories ?? []}
         customTitle={renderAccordionHead}
@@ -96,7 +110,7 @@ export default function TrendingScreen({ navigation }: TrendingScreenProps) {
         expandMultiple={false}
         customIcon={() => <></>}
       />
-    </ScrollView>
+    </View>
   );
 }
 
