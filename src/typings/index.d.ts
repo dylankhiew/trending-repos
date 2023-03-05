@@ -7,6 +7,8 @@ declare namespace app {
   interface ReposState {
     trendingRepos: RepositoryItem[];
     lastUpdated: string;
+    isLoading: boolean;
+    isError: boolean;
   }
 
   interface RepositoryAuthor {
