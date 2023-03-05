@@ -33,6 +33,6 @@ declare namespace app {
   }
 
   interface RequestRepoUpdatePayload {
-    forceUpdate: booelean;
+    forceUpdate: boolean;
   }
 }
