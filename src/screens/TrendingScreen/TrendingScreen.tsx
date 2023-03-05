@@ -1,14 +1,7 @@
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { StatusBar } from "expo-status-bar";
 import { useEffect, useState } from "react";
-import {
-  Image,
-  Platform,
-  ScrollView,
-  StyleSheet,
-  TouchableOpacity,
-  UIManager,
-} from "react-native";
+import { Platform, ScrollView, StyleSheet, UIManager } from "react-native";
 import { AccordionList } from "react-native-accordion-list-view";
 
 import { NavigationStackParamList } from "../../../App";
@@ -17,8 +10,11 @@ import AccordionBody from "../../components/AccordionBody";
 import AccordionHead from "../../components/AccordionHead";
 import AccordionHeadSkeleton from "../../components/AccordionHeadSkeleton";
 import ErrorModule from "../../components/ErrorModule";
+import HeaderButton from "../../components/HeaderButton";
+import SkeletonLoadingModule from "../../components/SkeletonLoadingModule";
 import { COLOR } from "../../constants/colorConstants";
 import { SPACING } from "../../constants/spacingConstants";
+import { TRENDING_SCREEN_CONFIG } from "../../constants/trendingScreenConstants";
 
 type TrendingScreenProps = NativeStackScreenProps<
   NavigationStackParamList,
@@ -34,12 +30,7 @@ export default function TrendingScreen({ navigation }: TrendingScreenProps) {
   useEffect(() => {
     navigation.setOptions({
       headerRight: () => (
-        <TouchableOpacity>
-          <Image
-            source={IMAGES.ICON.MORE_OPTIONS}
-            style={styles.moreOptionsIcon}
-          />
-        </TouchableOpacity>
+        <HeaderButton imageSource={IMAGES.ICON.MORE_OPTIONS} />
       ),
       headerTitleStyle: styles.header,
     });
@@ -69,6 +60,7 @@ export default function TrendingScreen({ navigation }: TrendingScreenProps) {
   };
 
   useEffect(() => {
+    // setIsError(true);
     fetchTrendingRepos();
   }, []);
 
@@ -83,18 +75,10 @@ export default function TrendingScreen({ navigation }: TrendingScreenProps) {
   if (isLoading) {
     // TO-DO: Clean up
     return (
-      <ScrollView contentContainerStyle={styles.container}>
-        <AccordionHeadSkeleton />
-        <AccordionHeadSkeleton />
-        <AccordionHeadSkeleton />
-        <AccordionHeadSkeleton />
-        <AccordionHeadSkeleton />
-        <AccordionHeadSkeleton />
-        <AccordionHeadSkeleton />
-        <AccordionHeadSkeleton />
-        <AccordionHeadSkeleton />
-        <AccordionHeadSkeleton />
-      </ScrollView>
+      <SkeletonLoadingModule
+        component={<AccordionHeadSkeleton />}
+        amount={TRENDING_SCREEN_CONFIG.SKELETON_LOADER_AMOUNT}
+      />
     );
   }
 
@@ -119,7 +103,7 @@ export default function TrendingScreen({ navigation }: TrendingScreenProps) {
         customTitle={renderAccordionHead}
         customBody={renderAccordionBody}
         style={styles.accordionList}
-        animationDuration={200}
+        animationDuration={TRENDING_SCREEN_CONFIG.ANIMATION_DURATION}
         expandMultiple={false}
         customIcon={() => <></>}
       />
@@ -140,10 +124,7 @@ const styles = StyleSheet.create({
     marginVertical: 14,
     fontFamily: "Roboto-Medium",
   },
-  moreOptionsIcon: {
-    width: 24,
-    height: 24,
-  },
+
   accordionList: {
     width: "100%",
     margin: 0,
