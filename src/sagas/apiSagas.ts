@@ -1,3 +1,4 @@
-export const getApi = (url: string) => {
-  return fetch(url).then((res) => res.json());
+export const getApi = async (url: string) => {
+  const res = await fetch(url);
+  return await res.json();
 };
