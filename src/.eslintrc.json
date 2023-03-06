@@ -58,11 +58,11 @@
           }
         ],
         "prettier/prettier": [
-          "error",
+          "warn",
           {
             "singleQuote": true,
             "trailingComma": "all",
-            "arrowParens": "avoid",
+            "arrowParens": "always",
             "endOfLine": "auto"
           }
         ],
