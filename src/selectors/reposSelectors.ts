@@ -5,32 +5,32 @@ export const appState = (state: app.State) => state;
 
 export const reposStateSelector = createSelector(
   appState,
-  state => state.repos,
+  (state) => state.repos,
 );
 
 export const trendingReposSelector = createSelector(
   reposStateSelector,
-  repos => repos.trendingRepos,
+  (repos) => repos.trendingRepos,
 );
 
 export const repoLastUpdatedSelector = createSelector(
   reposStateSelector,
-  repos => repos.lastUpdated,
+  (repos) => repos.lastUpdated,
 );
 
 export const repoIsLoadingSelector = createSelector(
   reposStateSelector,
-  repos => repos.isLoading,
+  (repos) => repos.isLoading,
 );
 
 export const repoIsErrorSelector = createSelector(
   reposStateSelector,
-  repos => repos.isError,
+  (repos) => repos.isError,
 );
 
 export const shouldFetchReposSelector = createSelector(
   repoLastUpdatedSelector,
-  lastUpdated => {
+  (lastUpdated) => {
     if (!lastUpdated) {
       return true;
     }
