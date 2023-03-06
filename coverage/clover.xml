@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1678080953509" clover="3.2.0">
-  <project timestamp="1678080953509" name="All files">
-    <metrics statements="31" coveredstatements="22" conditionals="2" coveredconditionals="0" methods="13" coveredmethods="5" elements="46" coveredelements="27" complexity="0" loc="31" ncloc="31" packages="2" files="4" classes="4"/>
+<coverage generated="1678087858044" clover="3.2.0">
+  <project timestamp="1678087858045" name="All files">
+    <metrics statements="31" coveredstatements="31" conditionals="2" coveredconditionals="2" methods="13" coveredmethods="12" elements="46" coveredelements="45" complexity="0" loc="31" ncloc="31" packages="2" files="4" classes="4"/>
     <package name="selectors">
-      <metrics statements="16" coveredstatements="7" conditionals="2" coveredconditionals="0" methods="7" coveredmethods="0"/>
+      <metrics statements="16" coveredstatements="16" conditionals="2" coveredconditionals="2" methods="7" coveredmethods="7"/>
       <file name="reposSelectors.ts" path="/Users/dylankhiewtienjie/Developer/github-trending-repos/src/selectors/reposSelectors.ts">
-        <metrics statements="16" coveredstatements="7" conditionals="2" coveredconditionals="0" methods="7" coveredmethods="0"/>
-        <line num="4" count="1" type="stmt"/>
-        <line num="6" count="1" type="stmt"/>
-        <line num="8" count="0" type="stmt"/>
-        <line num="11" count="1" type="stmt"/>
-        <line num="13" count="0" type="stmt"/>
-        <line num="16" count="1" type="stmt"/>
-        <line num="18" count="0" type="stmt"/>
-        <line num="21" count="1" type="stmt"/>
-        <line num="23" count="0" type="stmt"/>
-        <line num="26" count="1" type="stmt"/>
-        <line num="28" count="0" type="stmt"/>
-        <line num="31" count="1" type="stmt"/>
-        <line num="34" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="35" count="0" type="stmt"/>
-        <line num="38" count="0" type="stmt"/>
-        <line num="39" count="0" type="stmt"/>
+        <metrics statements="16" coveredstatements="16" conditionals="2" coveredconditionals="2" methods="7" coveredmethods="7"/>
+        <line num="4" count="4" type="stmt"/>
+        <line num="6" count="2" type="stmt"/>
+        <line num="8" count="4" type="stmt"/>
+        <line num="11" count="2" type="stmt"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="16" count="2" type="stmt"/>
+        <line num="18" count="4" type="stmt"/>
+        <line num="21" count="2" type="stmt"/>
+        <line num="23" count="1" type="stmt"/>
+        <line num="26" count="2" type="stmt"/>
+        <line num="28" count="1" type="stmt"/>
+        <line num="31" count="2" type="stmt"/>
+        <line num="34" count="3" type="cond" truecount="2" falsecount="0"/>
+        <line num="35" count="1" type="stmt"/>
+        <line num="38" count="2" type="stmt"/>
+        <line num="39" count="2" type="stmt"/>
       </file>
     </package>
     <package name="state">
