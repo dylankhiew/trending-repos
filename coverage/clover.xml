@@ -1,8 +1,84 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1678087858044" clover="3.2.0">
-  <project timestamp="1678087858045" name="All files">
-    <metrics statements="31" coveredstatements="31" conditionals="2" coveredconditionals="2" methods="13" coveredmethods="12" elements="46" coveredelements="45" complexity="0" loc="31" ncloc="31" packages="2" files="4" classes="4"/>
-    <package name="selectors">
+<coverage generated="1678098868421" clover="3.2.0">
+  <project timestamp="1678098868421" name="All files">
+    <metrics statements="59" coveredstatements="52" conditionals="4" coveredconditionals="3" methods="22" coveredmethods="21" elements="85" coveredelements="76" complexity="0" loc="59" ncloc="59" packages="4" files="18" classes="18"/>
+    <package name="__tests__.src.components.__snapshots__">
+      <metrics statements="7" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="AccordionBody.test.tsx.snap" path="/Users/dylankhiewtienjie/Developer/github-trending-repos/__tests__/src/components/__snapshots__/AccordionBody.test.tsx.snap">
+        <metrics statements="1" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="3" count="0" type="stmt"/>
+      </file>
+      <file name="AccordionHead.test.tsx.snap" path="/Users/dylankhiewtienjie/Developer/github-trending-repos/__tests__/src/components/__snapshots__/AccordionHead.test.tsx.snap">
+        <metrics statements="1" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="3" count="0" type="stmt"/>
+      </file>
+      <file name="AccordionHeadSkeleton.test.tsx.snap" path="/Users/dylankhiewtienjie/Developer/github-trending-repos/__tests__/src/components/__snapshots__/AccordionHeadSkeleton.test.tsx.snap">
+        <metrics statements="1" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="3" count="0" type="stmt"/>
+      </file>
+      <file name="ErrorModule.test.tsx.snap" path="/Users/dylankhiewtienjie/Developer/github-trending-repos/__tests__/src/components/__snapshots__/ErrorModule.test.tsx.snap">
+        <metrics statements="1" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="3" count="0" type="stmt"/>
+      </file>
+      <file name="HeaderButton.test.tsx.snap" path="/Users/dylankhiewtienjie/Developer/github-trending-repos/__tests__/src/components/__snapshots__/HeaderButton.test.tsx.snap">
+        <metrics statements="1" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="3" count="0" type="stmt"/>
+      </file>
+      <file name="RefreshIcon.test.tsx.snap" path="/Users/dylankhiewtienjie/Developer/github-trending-repos/__tests__/src/components/__snapshots__/RefreshIcon.test.tsx.snap">
+        <metrics statements="1" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="3" count="0" type="stmt"/>
+      </file>
+      <file name="SkeletonLoadingModule.test.tsx.snap" path="/Users/dylankhiewtienjie/Developer/github-trending-repos/__tests__/src/components/__snapshots__/SkeletonLoadingModule.test.tsx.snap">
+        <metrics statements="1" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="3" count="0" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.components">
+      <metrics statements="21" coveredstatements="21" conditionals="2" coveredconditionals="1" methods="9" coveredmethods="9"/>
+      <file name="AccordionBody.tsx" path="/Users/dylankhiewtienjie/Developer/github-trending-repos/src/components/AccordionBody.tsx">
+        <metrics statements="4" coveredstatements="4" conditionals="2" coveredconditionals="1" methods="1" coveredmethods="1"/>
+        <line num="15" count="1" type="stmt"/>
+        <line num="16" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="18" count="1" type="stmt"/>
+        <line num="41" count="1" type="stmt"/>
+      </file>
+      <file name="AccordionHead.tsx" path="/Users/dylankhiewtienjie/Developer/github-trending-repos/src/components/AccordionHead.tsx">
+        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="15" count="1" type="stmt"/>
+        <line num="17" count="1" type="stmt"/>
+        <line num="28" count="1" type="stmt"/>
+      </file>
+      <file name="AccordionHeadSkeleton.tsx" path="/Users/dylankhiewtienjie/Developer/github-trending-repos/src/components/AccordionHeadSkeleton.tsx">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="7" count="11" type="stmt"/>
+        <line num="18" count="2" type="stmt"/>
+      </file>
+      <file name="ErrorModule.tsx" path="/Users/dylankhiewtienjie/Developer/github-trending-repos/src/components/ErrorModule.tsx">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="28" count="1" type="stmt"/>
+        <line num="46" count="1" type="stmt"/>
+      </file>
+      <file name="HeaderButton.tsx" path="/Users/dylankhiewtienjie/Developer/github-trending-repos/src/components/HeaderButton.tsx">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="18" count="1" type="stmt"/>
+        <line num="25" count="1" type="stmt"/>
+      </file>
+      <file name="RefreshIcon.tsx" path="/Users/dylankhiewtienjie/Developer/github-trending-repos/src/components/RefreshIcon.tsx">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="14" count="1" type="stmt"/>
+      </file>
+      <file name="SkeletonLoadingModule.tsx" path="/Users/dylankhiewtienjie/Developer/github-trending-repos/src/components/SkeletonLoadingModule.tsx">
+        <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
+        <line num="14" count="1" type="stmt"/>
+        <line num="15" count="1" type="stmt"/>
+        <line num="16" count="10" type="stmt"/>
+        <line num="20" count="1" type="stmt"/>
+        <line num="25" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.selectors">
       <metrics statements="16" coveredstatements="16" conditionals="2" coveredconditionals="2" methods="7" coveredmethods="7"/>
       <file name="reposSelectors.ts" path="/Users/dylankhiewtienjie/Developer/github-trending-repos/src/selectors/reposSelectors.ts">
         <metrics statements="16" coveredstatements="16" conditionals="2" coveredconditionals="2" methods="7" coveredmethods="7"/>
@@ -24,7 +100,7 @@
         <line num="39" count="2" type="stmt"/>
       </file>
     </package>
-    <package name="state">
+    <package name="src.state">
       <metrics statements="15" coveredstatements="15" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="5"/>
       <file name="reposReducers.ts" path="/Users/dylankhiewtienjie/Developer/github-trending-repos/src/state/reposReducers.ts">
         <metrics statements="7" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="5"/>

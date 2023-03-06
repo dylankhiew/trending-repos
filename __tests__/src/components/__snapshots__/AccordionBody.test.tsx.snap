@@ -1,0 +1,138 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[` should render correctly 1`] = `
+<View
+  style={
+    {
+      "display": "flex",
+      "flex": 1,
+      "flexDirection": "column",
+      "margin": 0,
+      "marginBottom": 8,
+      "marginLeft": 64,
+    }
+  }
+>
+  <Text
+    style={
+      {
+        "color": "#52575C",
+        "fontFamily": "PingFangSC-Regular",
+        "fontSize": 12,
+        "marginRight": 16,
+      }
+    }
+  >
+    Upload a photo of your room to generate your dream room with AI. (https://github.com/Nutlope/roomGPT)
+  </Text>
+  <View
+    style={
+      {
+        "flex": 1,
+        "flexDirection": "row",
+        "marginTop": 8,
+      }
+    }
+  >
+    <View
+      style={
+        {
+          "alignContent": "center",
+          "alignItems": "center",
+          "flexDirection": "row",
+          "justifyContent": "center",
+          "marginRight": 12,
+        }
+      }
+    >
+      <View
+        style={
+          [
+            {
+              "borderRadius": 12,
+              "height": 12,
+              "marginRight": 4,
+              "width": 12,
+            },
+            {
+              "backgroundColor": "#3178c6",
+            },
+          ]
+        }
+      />
+      <Text
+        style={
+          {
+            "color": "#52575C",
+            "fontFamily": "Roboto-Regular",
+          }
+        }
+      >
+        TypeScript
+      </Text>
+    </View>
+    <View
+      style={
+        {
+          "alignContent": "center",
+          "alignItems": "center",
+          "flexDirection": "row",
+          "justifyContent": "center",
+          "marginRight": 12,
+        }
+      }
+    >
+      <Image
+        source={1}
+        style={
+          {
+            "height": 16,
+            "width": 16,
+          }
+        }
+      />
+      <Text
+        style={
+          {
+            "color": "#52575C",
+            "fontFamily": "Roboto-Regular",
+          }
+        }
+      >
+        806
+      </Text>
+    </View>
+    <View
+      style={
+        {
+          "alignContent": "center",
+          "alignItems": "center",
+          "flexDirection": "row",
+          "justifyContent": "center",
+          "marginRight": 12,
+        }
+      }
+    >
+      <Image
+        source={1}
+        style={
+          {
+            "height": 16,
+            "width": 16,
+          }
+        }
+      />
+      <Text
+        style={
+          {
+            "color": "#52575C",
+            "fontFamily": "Roboto-Regular",
+          }
+        }
+      >
+        227
+      </Text>
+    </View>
+  </View>
+</View>
+`;

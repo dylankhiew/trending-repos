@@ -1,0 +1,117 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render correctly 1`] = `
+<RCTSafeAreaView
+  style={
+    {
+      "alignItems": "center",
+      "backgroundColor": "#FAFAFA",
+      "flex": 1,
+      "justifyContent": "center",
+      "paddingHorizontal": 48,
+    }
+  }
+>
+  <Image
+    resizeMode="contain"
+    source={0}
+    style={
+      {
+        "height": 300,
+      }
+    }
+  />
+  <Text
+    style={
+      {
+        "color": "#4A4A4A",
+        "fontFamily": "Roboto-Bold",
+        "fontSize": 18,
+        "marginTop": 24,
+      }
+    }
+  >
+    title
+  </Text>
+  <Text
+    style={
+      {
+        "color": "#929292",
+        "fontFamily": "Roboto-Regular",
+        "fontSize": 15,
+        "marginTop": 8,
+      }
+    }
+  >
+    subtitle
+  </Text>
+  <View
+    style={
+      {
+        "bottom": 32,
+        "height": 48,
+        "position": "absolute",
+        "width": "100%",
+      }
+    }
+  >
+    <View
+      accessibilityState={
+        {
+          "busy": undefined,
+          "checked": undefined,
+          "disabled": undefined,
+          "expanded": undefined,
+          "selected": undefined,
+        }
+      }
+      accessibilityValue={
+        {
+          "max": undefined,
+          "min": undefined,
+          "now": undefined,
+          "text": undefined,
+        }
+      }
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        {
+          "alignItems": "center",
+          "backgroundColor": "#FFFFFF",
+          "borderColor": "#31B057",
+          "borderRadius": 4,
+          "borderWidth": 1,
+          "display": "flex",
+          "flex": 1,
+          "heigth": 48,
+          "justifyContent": "center",
+          "marginHorizontal": 16,
+          "opacity": 1,
+        }
+      }
+    >
+      <Text
+        style={
+          {
+            "color": "#31B057",
+            "fontFamily": "Roboto-Medium",
+            "fontSize": 15,
+            "textTransform": "uppercase",
+          }
+        }
+      >
+        buttonTitle
+      </Text>
+    </View>
+  </View>
+</RCTSafeAreaView>
+`;

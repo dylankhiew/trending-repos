@@ -1,0 +1,60 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render correctly 1`] = `
+<View
+  style={
+    {
+      "display": "flex",
+      "flex": 1,
+      "flexDirection": "row",
+      "marginBottom": 8,
+      "marginTop": 8,
+    }
+  }
+>
+  <Image
+    source={
+      {
+        "uri": "https://avatars.githubusercontent.com/u/63742054?s=40&v=4",
+      }
+    }
+    style={
+      {
+        "borderRadius": 50,
+        "height": 32,
+        "marginHorizontal": 16,
+        "width": 32,
+      }
+    }
+  />
+  <View
+    style={
+      {
+        "flexDirection": "column",
+      }
+    }
+  >
+    <Text
+      style={
+        {
+          "fontFamily": "Roboto-Regular",
+          "fontSize": 12,
+          "marginBottom": 4,
+        }
+      }
+    >
+      Nutlope
+    </Text>
+    <Text
+      style={
+        {
+          "fontFamily": "Roboto-Medium",
+          "fontSize": 15,
+        }
+      }
+    >
+      roomGPT
+    </Text>
+  </View>
+</View>
+`;
