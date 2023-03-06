@@ -74,3 +74,6 @@ npm run lint
 2. As for the pull-to-refresh functionality, initially I was using refreshControl, but there was no way to configure a custom icon for that, so I went ahead with a custom pull-to-refresh method.
 3. Initially I wanted to use libraries for the skeleton loader, but due to most of having the shimmer effect (which requires react-native-linear-gradient, which is not supported in Expo unfortunately), I decided to just implement the component myself, without the shimmer.
 4. Do note that while the landscape orientation works, it causes the styling of the list view to be off.
+5. The code coverage took a huge chunk of Language section, as it seems to be printing the coverage to HTML 
+
+<img width="322" alt="Screenshot 2023-03-06 at 8 27 06 PM" src="https://user-images.githubusercontent.com/16792330/223110207-5657932f-eb09-41bb-bc44-045328a01f0b.png">
