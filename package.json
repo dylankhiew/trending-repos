@@ -65,8 +65,11 @@
       "**/*.{js,jsx}",
       "!**/coverage/**",
       "!**/node_modules/**",
-      "!**/babel.config.js",
-      "!**/jest.setup.js"
-    ]
+      "!**/**.config.js",
+      "!**/jest.setup.js",
+      "**/src/**/selectors/**",
+      "**/src/**/state/**"
+    ],
+    "setupFiles": ["./__mocks__/@react-native-async-storage/async-storage.js"]
   }
 }
