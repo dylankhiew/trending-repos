@@ -43,18 +43,6 @@ describe("Reducers :: reposReducers", () => {
               avatar:
                 "https://avatars.githubusercontent.com/u/63742054?s=40&v=4",
             },
-            {
-              username: "ljwagerfield",
-              url: "https://github.com/ljwagerfield",
-              avatar:
-                "https://avatars.githubusercontent.com/u/3638917?s=40&v=4",
-            },
-            {
-              username: "CarboxyDev",
-              url: "https://github.com/CarboxyDev",
-              avatar:
-                "https://avatars.githubusercontent.com/u/37100541?s=40&v=4",
-            },
           ],
         },
       ];
