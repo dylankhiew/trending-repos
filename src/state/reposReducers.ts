@@ -7,7 +7,7 @@ import {
   updateRepos,
 } from "../actions/reposActions";
 
-const INITIAL_REPOS_STATE: app.ReposState = {
+export const INITIAL_REPOS_STATE: app.ReposState = {
   trendingRepos: [],
   lastUpdated: "",
   isLoading: false,
