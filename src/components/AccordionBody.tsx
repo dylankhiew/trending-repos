@@ -8,7 +8,7 @@ interface AccordionBodyProps {
   repository: app.RepositoryItem;
 }
 
-export default function AccordionHead({
+export default function AccordionBody({
   repository,
 }: AccordionBodyProps): JSX.Element {
   const { description, url, language, starsSince, forks, languageColor } =
