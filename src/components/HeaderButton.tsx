@@ -1,10 +1,10 @@
-import * as React from "react";
+import * as React from 'react';
 import {
   Image,
   ImageSourcePropType,
   StyleSheet,
   TouchableOpacity,
-} from "react-native";
+} from 'react-native';
 
 interface HeaderButtonProps {
   imageSource: ImageSourcePropType;

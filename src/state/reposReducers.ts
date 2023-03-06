@@ -1,20 +1,20 @@
-import { createReducer, PayloadAction } from "@reduxjs/toolkit";
+import { createReducer, PayloadAction } from '@reduxjs/toolkit';
 
 import {
   setIsError,
   setIsLoading,
   setLastUpdated,
   updateRepos,
-} from "../actions/reposActions";
+} from '../actions/reposActions';
 
 export const INITIAL_REPOS_STATE: app.ReposState = {
   trendingRepos: [],
-  lastUpdated: "",
+  lastUpdated: '',
   isLoading: false,
   isError: false,
 };
 
-export const reposReducers = createReducer(INITIAL_REPOS_STATE, (builder) =>
+export const reposReducers = createReducer(INITIAL_REPOS_STATE, builder =>
   builder
     .addCase(
       updateRepos,
@@ -23,7 +23,7 @@ export const reposReducers = createReducer(INITIAL_REPOS_STATE, (builder) =>
           ...state,
           trendingRepos: action.payload,
         };
-      }
+      },
     )
     .addCase(setLastUpdated, (state, action: PayloadAction<string>) => {
       return {
@@ -42,5 +42,5 @@ export const reposReducers = createReducer(INITIAL_REPOS_STATE, (builder) =>
         ...state,
         isError: action.payload,
       };
-    })
+    }),
 );

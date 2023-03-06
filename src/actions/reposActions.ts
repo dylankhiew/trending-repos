@@ -1,12 +1,12 @@
-import { createAction } from "@reduxjs/toolkit";
+import { createAction } from '@reduxjs/toolkit';
 
-export const REQUEST_REPO_UPDATE = "REQUEST_REPO_UPDATE";
-export const UPDATE_REPOS = "UPDATE_REPOS";
+export const REQUEST_REPO_UPDATE = 'REQUEST_REPO_UPDATE';
+export const UPDATE_REPOS = 'UPDATE_REPOS';
 
-export const SET_IS_LOADING = "SET_IS_LOADING";
-export const SET_IS_ERROR = "SET_IS_ERROR";
+export const SET_IS_LOADING = 'SET_IS_LOADING';
+export const SET_IS_ERROR = 'SET_IS_ERROR';
 
-export const SET_LAST_UPDATED = "SET_LAST_UPDATED";
+export const SET_LAST_UPDATED = 'SET_LAST_UPDATED';
 
 const requestRepoUpdate =
   createAction<app.RequestRepoUpdatePayload>(REQUEST_REPO_UPDATE);

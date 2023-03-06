@@ -1,7 +1,7 @@
-import * as React from "react";
-import { Image, StyleSheet, View } from "react-native";
+import * as React from 'react';
+import { Image, StyleSheet, View } from 'react-native';
 
-import { IMAGES } from "../../assets/IMAGES";
+import { IMAGES } from '../../assets/IMAGES';
 
 export default function RefreshIcon(): JSX.Element {
   return (
@@ -13,16 +13,16 @@ export default function RefreshIcon(): JSX.Element {
 
 const styles = StyleSheet.create({
   refreshIconContainer: {
-    position: "absolute",
+    position: 'absolute',
     top: 30,
     height: 40,
     width: 40,
-    backgroundColor: "white",
-    justifyContent: "center",
-    alignContent: "center",
-    alignItems: "center",
+    backgroundColor: 'white',
+    justifyContent: 'center',
+    alignContent: 'center',
+    alignItems: 'center',
     borderRadius: 40,
-    shadowColor: "#000",
+    shadowColor: '#000',
     shadowOffset: {
       width: 0,
       height: 5,

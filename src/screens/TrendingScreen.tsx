@@ -1,6 +1,6 @@
-import { NativeStackScreenProps } from "@react-navigation/native-stack";
-import { StatusBar } from "expo-status-bar";
-import { useEffect, useState } from "react";
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { StatusBar } from 'expo-status-bar';
+import { useEffect, useState } from 'react';
 import {
   Platform,
   StyleSheet,
@@ -8,33 +8,33 @@ import {
   View,
   NativeScrollEvent,
   NativeSyntheticEvent,
-} from "react-native";
-import { AccordionList } from "react-native-accordion-list-view";
-import { useSelector } from "react-redux";
+} from 'react-native';
+import { AccordionList } from 'react-native-accordion-list-view';
+import { useSelector } from 'react-redux';
 
-import { NavigationStackParamList } from "../../App";
-import { IMAGES } from "../../assets/IMAGES";
-import { requestRepoUpdate } from "../actions/reposActions";
-import AccordionBody from "../components/AccordionBody";
-import AccordionHead from "../components/AccordionHead";
-import AccordionHeadSkeleton from "../components/AccordionHeadSkeleton";
-import ErrorModule from "../components/ErrorModule";
-import HeaderButton from "../components/HeaderButton";
-import RefreshIcon from "../components/RefreshIcon";
-import SkeletonLoadingModule from "../components/SkeletonLoadingModule";
-import { COLOR } from "../constants/colorConstants";
-import { SPACING } from "../constants/spacingConstants";
-import { TRENDING_SCREEN_CONFIG } from "../constants/trendingScreenConstants";
+import { NavigationStackParamList } from '../../App';
+import { IMAGES } from '../../assets/IMAGES';
+import { requestRepoUpdate } from '../actions/reposActions';
+import AccordionBody from '../components/AccordionBody';
+import AccordionHead from '../components/AccordionHead';
+import AccordionHeadSkeleton from '../components/AccordionHeadSkeleton';
+import ErrorModule from '../components/ErrorModule';
+import HeaderButton from '../components/HeaderButton';
+import RefreshIcon from '../components/RefreshIcon';
+import SkeletonLoadingModule from '../components/SkeletonLoadingModule';
+import { COLOR } from '../constants/colorConstants';
+import { SPACING } from '../constants/spacingConstants';
+import { TRENDING_SCREEN_CONFIG } from '../constants/trendingScreenConstants';
 import {
   repoIsErrorSelector,
   repoIsLoadingSelector,
   trendingReposSelector,
-} from "../selectors/reposSelectors";
-import { useReduxDispatch } from "../state/store";
+} from '../selectors/reposSelectors';
+import { useReduxDispatch } from '../state/store';
 
 type TrendingScreenProps = NativeStackScreenProps<
   NavigationStackParamList,
-  "Trending"
+  'Trending'
 >;
 
 export default function TrendingScreen({ navigation }: TrendingScreenProps) {
@@ -52,7 +52,7 @@ export default function TrendingScreen({ navigation }: TrendingScreenProps) {
     dispatch(
       requestRepoUpdate({
         shouldForceUpdate: false,
-      })
+      }),
     );
 
     navigation.setOptions({
@@ -63,7 +63,7 @@ export default function TrendingScreen({ navigation }: TrendingScreenProps) {
     });
 
     // Needed for the library
-    if (Platform.OS === "android") {
+    if (Platform.OS === 'android') {
       if (UIManager.setLayoutAnimationEnabledExperimental) {
         UIManager.setLayoutAnimationEnabledExperimental(true);
       }
@@ -89,7 +89,7 @@ export default function TrendingScreen({ navigation }: TrendingScreenProps) {
       dispatch(
         requestRepoUpdate({
           shouldForceUpdate: true,
-        })
+        }),
       );
       setOffsetY(0);
     }
@@ -129,7 +129,7 @@ export default function TrendingScreen({ navigation }: TrendingScreenProps) {
           dispatch(
             requestRepoUpdate({
               shouldForceUpdate: true,
-            })
+            }),
           );
         }}
       />
@@ -159,18 +159,18 @@ export default function TrendingScreen({ navigation }: TrendingScreenProps) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
     paddingBottom: SPACING.S_4,
   },
   header: {
     fontSize: 21,
     marginVertical: 14,
-    fontFamily: "Roboto-Medium",
+    fontFamily: 'Roboto-Medium',
   },
   accordionList: {
-    width: "100%",
+    width: '100%',
     margin: 0,
   },
   accordionItem: {

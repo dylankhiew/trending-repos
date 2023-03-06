@@ -6,9 +6,9 @@ import {
   Text,
   TouchableOpacity,
   View,
-} from "react-native";
+} from 'react-native';
 
-import { COLOR } from "../constants/colorConstants";
+import { COLOR } from '../constants/colorConstants';
 
 interface ErrorModuleProps {
   title: string;
@@ -47,8 +47,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: COLOR.OFF_WHITE,
-    alignItems: "center",
-    justifyContent: "center",
+    alignItems: 'center',
+    justifyContent: 'center',
     paddingHorizontal: 48,
   },
   errorImage: {
@@ -57,27 +57,27 @@ const styles = StyleSheet.create({
   title: {
     marginTop: 24,
     fontSize: 18,
-    fontFamily: "Roboto-Bold",
+    fontFamily: 'Roboto-Bold',
     color: COLOR.GRAY400,
   },
   subtitle: {
     marginTop: 8,
     fontSize: 15,
-    fontFamily: "Roboto-Regular",
+    fontFamily: 'Roboto-Regular',
     color: COLOR.GRAY200,
   },
   buttonContainer: {
-    width: "100%",
-    position: "absolute",
+    width: '100%',
+    position: 'absolute',
     bottom: 32,
     height: 48,
   },
   button: {
     borderColor: COLOR.GREEN,
     backgroundColor: COLOR.WHITE,
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
     heigth: 48,
     marginHorizontal: 16,
     borderWidth: 1,
@@ -85,9 +85,9 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   buttonText: {
-    fontFamily: "Roboto-Medium",
+    fontFamily: 'Roboto-Medium',
     fontSize: 15,
     color: COLOR.GREEN,
-    textTransform: "uppercase",
+    textTransform: 'uppercase',
   },
 });

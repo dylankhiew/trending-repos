@@ -1,6 +1,6 @@
-import { Image, StyleSheet, Text, View } from "react-native";
+import { Image, StyleSheet, Text, View } from 'react-native';
 
-import { SPACING } from "../constants/spacingConstants";
+import { SPACING } from '../constants/spacingConstants';
 
 interface AccordionHeadProps {
   repository: app.RepositoryItem;
@@ -27,8 +27,8 @@ export default function AccordionHead({
 
 const styles = StyleSheet.create({
   accordionContainer: {
-    display: "flex",
-    flexDirection: "row",
+    display: 'flex',
+    flexDirection: 'row',
     flex: 1,
     marginTop: SPACING.S_2,
     marginBottom: SPACING.S_2,
@@ -40,15 +40,15 @@ const styles = StyleSheet.create({
     marginHorizontal: SPACING.S_4,
   },
   accordionTitleArea: {
-    flexDirection: "column",
+    flexDirection: 'column',
   },
   accordionHeader: {
     fontSize: 12,
     marginBottom: SPACING.S_0,
-    fontFamily: "Roboto-Regular",
+    fontFamily: 'Roboto-Regular',
   },
   accordionTitle: {
     fontSize: 15,
-    fontFamily: "Roboto-Medium",
+    fontFamily: 'Roboto-Medium',
   },
 });

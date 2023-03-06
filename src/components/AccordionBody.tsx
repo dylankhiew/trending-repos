@@ -1,8 +1,8 @@
-import { Image, StyleSheet, Text, View } from "react-native";
+import { Image, StyleSheet, Text, View } from 'react-native';
 
-import { IMAGES } from "../../assets/IMAGES";
-import { COLOR } from "../constants/colorConstants";
-import { SPACING } from "../constants/spacingConstants";
+import { IMAGES } from '../../assets/IMAGES';
+import { COLOR } from '../constants/colorConstants';
+import { SPACING } from '../constants/spacingConstants';
 
 interface AccordionBodyProps {
   repository: app.RepositoryItem;
@@ -13,7 +13,7 @@ export default function AccordionBody({
 }: AccordionBodyProps): JSX.Element {
   const { description, url, language, starsSince, forks, languageColor } =
     repository;
-  const bodyDescription = `${description ?? ""} (${url})`;
+  const bodyDescription = `${description ?? ''} (${url})`;
 
   return (
     <View style={styles.accordionBodyContainer}>
@@ -40,8 +40,8 @@ export default function AccordionBody({
 
 const styles = StyleSheet.create({
   accordionBodyContainer: {
-    display: "flex",
-    flexDirection: "column",
+    display: 'flex',
+    flexDirection: 'column',
     flex: 1,
     margin: 0,
     // Offspace which accounts for avatar and its margin
@@ -50,14 +50,14 @@ const styles = StyleSheet.create({
   },
   accordionFooter: {
     flex: 1,
-    flexDirection: "row",
+    flexDirection: 'row',
     marginTop: SPACING.S_2,
   },
   bottomFooter: {
-    flexDirection: "row",
-    justifyContent: "center",
-    alignContent: "center",
-    alignItems: "center",
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignContent: 'center',
+    alignItems: 'center',
     marginRight: SPACING.S_3,
   },
   languageCircle: {
@@ -72,10 +72,10 @@ const styles = StyleSheet.create({
   },
   bottomFooterText: {
     color: COLOR.GRAY300,
-    fontFamily: "Roboto-Regular",
+    fontFamily: 'Roboto-Regular',
   },
   accordionDescription: {
-    fontFamily: "PingFangSC-Regular",
+    fontFamily: 'PingFangSC-Regular',
     fontSize: 12,
     marginRight: SPACING.S_4,
     color: COLOR.GRAY300,

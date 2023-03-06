@@ -1,7 +1,7 @@
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, View } from 'react-native';
 
-import { COLOR } from "../constants/colorConstants";
-import { SPACING } from "../constants/spacingConstants";
+import { COLOR } from '../constants/colorConstants';
+import { SPACING } from '../constants/spacingConstants';
 
 export default function AccordionHeadSkeleton(): JSX.Element {
   return (
@@ -17,8 +17,8 @@ export default function AccordionHeadSkeleton(): JSX.Element {
 
 const styles = StyleSheet.create({
   accordionContainer: {
-    display: "flex",
-    flexDirection: "row",
+    display: 'flex',
+    flexDirection: 'row',
     flex: 1,
     borderBottomColor: COLOR.GRAY100,
     borderBottomWidth: 1,
@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
     backgroundColor: COLOR.GRAY100,
   },
   accordionTitleArea: {
-    flexDirection: "column",
+    flexDirection: 'column',
     flex: 1,
   },
   accordionHeader: {

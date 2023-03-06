@@ -1,6 +1,6 @@
-import { combineReducers } from "redux";
+import { combineReducers } from 'redux';
 
-import { reposReducers } from "./reposReducers";
+import { reposReducers } from './reposReducers';
 
 export const rootReducer = combineReducers({
   repos: reposReducers,

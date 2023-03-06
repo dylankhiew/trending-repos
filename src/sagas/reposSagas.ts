@@ -1,16 +1,16 @@
-import { call, put, select, takeEvery } from "@redux-saga/core/effects";
-import moment from "moment";
+import { call, put, select, takeEvery } from '@redux-saga/core/effects';
+import moment from 'moment';
 
-import { getApi } from "./apiSagas";
+import { getApi } from './apiSagas';
 import {
   requestRepoUpdate,
   setIsError,
   setIsLoading,
   setLastUpdated,
   updateRepos,
-} from "../actions/reposActions";
-import { API_ENDPOINTS } from "../constants/apiConstants";
-import { shouldFetchReposSelector } from "../selectors/reposSelectors";
+} from '../actions/reposActions';
+import { API_ENDPOINTS } from '../constants/apiConstants';
+import { shouldFetchReposSelector } from '../selectors/reposSelectors';
 
 function* updateReposSaga(action: ReturnType<typeof requestRepoUpdate>) {
   const shouldFetchRepos: boolean = yield select(shouldFetchReposSelector);
@@ -21,7 +21,7 @@ function* updateReposSaga(action: ReturnType<typeof requestRepoUpdate>) {
     try {
       const repos: app.RepositoryItem[] = yield call(
         getApi,
-        API_ENDPOINTS.TRENDING_URL
+        API_ENDPOINTS.TRENDING_URL,
       );
       yield put(updateRepos(repos));
       yield put(setIsError(false));
