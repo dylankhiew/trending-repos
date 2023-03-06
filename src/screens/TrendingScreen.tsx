@@ -62,7 +62,7 @@ export default function TrendingScreen({ navigation }: TrendingScreenProps) {
       headerTitleStyle: styles.header,
     });
 
-    // Needed for the library
+    // Initialised for react-native-accordion-list-view
     if (Platform.OS === 'android') {
       if (UIManager.setLayoutAnimationEnabledExperimental) {
         UIManager.setLayoutAnimationEnabledExperimental(true);
