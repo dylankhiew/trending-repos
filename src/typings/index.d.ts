@@ -9,6 +9,8 @@ declare namespace app {
     lastUpdated: string;
     isLoading: boolean;
     isError: boolean;
+    shouldShowSortMenu: boolean;
+    sortingMethod: RepoSortingMethod;
   }
 
   interface RepositoryAuthor {
@@ -35,4 +37,6 @@ declare namespace app {
   interface RequestRepoUpdatePayload {
     shouldForceUpdate: boolean;
   }
+
+  type RepoSortingMethod = 'STARS' | 'NAME';
 }
