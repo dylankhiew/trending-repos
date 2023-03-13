@@ -1,31 +1,31 @@
-import React from "react";
-import renderer from "react-test-renderer";
+import React from 'react';
+import renderer from 'react-test-renderer';
 
-import AccordionHead from "../../../src/components/AccordionHead";
+import AccordionHead from '../../../src/components/AccordionHead';
 
 const repo: app.RepositoryItem = {
   rank: 1,
-  username: "Nutlope",
-  repositoryName: "roomGPT",
-  url: "https://github.com/Nutlope/roomGPT",
+  username: 'Nutlope',
+  repositoryName: 'roomGPT',
+  url: 'https://github.com/Nutlope/roomGPT',
   description:
-    "Upload a photo of your room to generate your dream room with AI.",
-  language: "TypeScript",
-  languageColor: "#3178c6",
+    'Upload a photo of your room to generate your dream room with AI.',
+  language: 'TypeScript',
+  languageColor: '#3178c6',
   totalStars: 2940,
   forks: 227,
   starsSince: 806,
-  since: "daily",
+  since: 'daily',
   builtBy: [
     {
-      username: "Nutlope",
-      url: "https://github.com/Nutlope",
-      avatar: "https://avatars.githubusercontent.com/u/63742054?s=40&v=4",
+      username: 'Nutlope',
+      url: 'https://github.com/Nutlope',
+      avatar: 'https://avatars.githubusercontent.com/u/63742054?s=40&v=4',
     },
   ],
 };
 
-it("should render correctly", () => {
+it('should render correctly', () => {
   const tree = renderer.create(<AccordionHead repository={repo} />).toJSON();
   expect(tree).toMatchSnapshot();
 });

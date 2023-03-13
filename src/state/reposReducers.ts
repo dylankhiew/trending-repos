@@ -14,7 +14,7 @@ export const INITIAL_REPOS_STATE: app.ReposState = {
   isError: false,
 };
 
-export const reposReducers = createReducer(INITIAL_REPOS_STATE, builder =>
+export const reposReducers = createReducer(INITIAL_REPOS_STATE, (builder) =>
   builder
     .addCase(
       updateRepos,
