@@ -7,6 +7,8 @@ import {
   setIsError,
   setIsLoading,
   setLastUpdated,
+  setRepoSortingMethod,
+  toggleDisplaySortMenu,
   updateRepos,
 } from '../actions/reposActions';
 import { API_ENDPOINTS } from '../constants/apiConstants';
@@ -36,6 +38,12 @@ function* updateReposSaga(action: ReturnType<typeof requestRepoUpdate>) {
   }
 }
 
+function* setRepoSortingMethodSaga() {
+  // Hides the sort menu when user clicks on the sort for better experience
+  yield put(toggleDisplaySortMenu());
+}
+
 export function* reposRuntime() {
   yield takeEvery(requestRepoUpdate.toString(), updateReposSaga);
+  yield takeEvery(setRepoSortingMethod.toString(), setRepoSortingMethodSaga);
 }
