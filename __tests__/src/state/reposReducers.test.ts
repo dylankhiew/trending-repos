@@ -4,6 +4,8 @@ import {
   setIsError,
   setIsLoading,
   setLastUpdated,
+  setRepoSortingMethod,
+  toggleDisplaySortMenu,
   updateRepos,
 } from '../../../src/actions/reposActions';
 import {
@@ -102,6 +104,36 @@ describe('Reducers :: reposReducers', () => {
       expect(reposReducers(initialState, setIsError(true))).toEqual(
         expectedState,
       );
+    });
+  });
+
+  describe('toggleDisplaySortMenu', () => {
+    test('should handle updating shouldShowSortMenu', () => {
+      const initialState: app.ReposState = INITIAL_REPOS_STATE;
+
+      const expectedState: app.ReposState = {
+        ...INITIAL_REPOS_STATE,
+        shouldShowSortMenu: true,
+      };
+
+      expect(reposReducers(initialState, toggleDisplaySortMenu())).toEqual(
+        expectedState,
+      );
+    });
+
+    describe('toggleDisplaySortMenu', () => {
+      test('should handle updating shouldShowSortMenu', () => {
+        const initialState: app.ReposState = INITIAL_REPOS_STATE;
+
+        const expectedState: app.ReposState = {
+          ...INITIAL_REPOS_STATE,
+          sortingMethod: 'NAME',
+        };
+
+        expect(
+          reposReducers(initialState, setRepoSortingMethod('NAME')),
+        ).toEqual(expectedState);
+      });
     });
   });
 });

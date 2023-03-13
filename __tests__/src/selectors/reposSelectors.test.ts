@@ -2,8 +2,11 @@ import {
   repoIsErrorSelector,
   repoIsLoadingSelector,
   repoLastUpdatedSelector,
+  repoSortingMethodSelector,
   reposStateSelector,
   shouldFetchReposSelector,
+  shouldShowSortMenuSelector,
+  sortedTrendingReposSelector,
   trendingReposSelector,
 } from '../../../src/selectors/reposSelectors';
 
@@ -11,13 +14,34 @@ const mockTrendingRepos: app.RepositoryItem[] = [
   {
     rank: 1,
     username: 'Nutlope',
-    repositoryName: 'roomGPT',
+    repositoryName: 'Pineapple',
     url: 'https://github.com/Nutlope/roomGPT',
     description:
       'Upload a photo of your room to generate your dream room with AI.',
     language: 'TypeScript',
     languageColor: '#3178c6',
     totalStars: 2940,
+    forks: 227,
+    starsSince: 5000,
+    since: 'daily',
+    builtBy: [
+      {
+        username: 'Nutlope',
+        url: 'https://github.com/Nutlope',
+        avatar: 'https://avatars.githubusercontent.com/u/63742054?s=40&v=4',
+      },
+    ],
+  },
+  {
+    rank: 3,
+    username: 'Nutlope',
+    repositoryName: 'Apple',
+    url: 'https://github.com/Nutlope/roomGPT',
+    description:
+      'Upload a photo of your room to generate your dream room with AI.',
+    language: 'TypeScript',
+    languageColor: '#3178c6',
+    totalStars: 3000,
     forks: 227,
     starsSince: 806,
     since: 'daily',
@@ -37,6 +61,8 @@ const mockState: app.State = {
     lastUpdated: '2023-03-06T05:44:56.381Z',
     isLoading: false,
     isError: false,
+    shouldShowSortMenu: false,
+    sortingMethod: 'NAME',
   },
 };
 
@@ -104,6 +130,34 @@ describe('Selector :: reposSelectors', () => {
       expect(shouldFetchReposSelector(mockStateWithEmptyLastUpdated)).toEqual(
         false,
       );
+    });
+  });
+
+  test('shouldShowSortMenuSelector', () => {
+    const expectedOutput = mockState.repos.isError;
+    expect(shouldShowSortMenuSelector(mockState)).toEqual(expectedOutput);
+  });
+
+  test('repoSortingMethodSelector', () => {
+    const expectedOutput = mockState.repos.sortingMethod;
+    expect(repoSortingMethodSelector(mockState)).toEqual(expectedOutput);
+  });
+
+  describe('sortedTrendingReposSelector', () => {
+    it('should return repos sorted by name', () => {
+      const expectedOutput: app.RepositoryItem[] = [
+        mockTrendingRepos[1],
+        mockTrendingRepos[0],
+      ];
+      expect(sortedTrendingReposSelector(mockState)).toEqual(expectedOutput);
+    });
+
+    it('should return repos sorted by stars', () => {
+      const expectedOutput: app.RepositoryItem[] = [
+        mockTrendingRepos[1],
+        mockTrendingRepos[0],
+      ];
+      expect(sortedTrendingReposSelector(mockState)).toEqual(expectedOutput);
     });
   });
 });
