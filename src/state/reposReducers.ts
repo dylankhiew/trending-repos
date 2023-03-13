@@ -4,6 +4,8 @@ import {
   setIsError,
   setIsLoading,
   setLastUpdated,
+  setRepoSortingMethod,
+  toggleDisplaySortMenu,
   updateRepos,
 } from '../actions/reposActions';
 
@@ -12,6 +14,8 @@ export const INITIAL_REPOS_STATE: app.ReposState = {
   lastUpdated: '',
   isLoading: false,
   isError: false,
+  shouldShowSortMenu: false,
+  sortingMethod: 'STARS',
 };
 
 export const reposReducers = createReducer(INITIAL_REPOS_STATE, (builder) =>
@@ -42,5 +46,20 @@ export const reposReducers = createReducer(INITIAL_REPOS_STATE, (builder) =>
         ...state,
         isError: action.payload,
       };
-    }),
+    })
+    .addCase(toggleDisplaySortMenu, (state) => {
+      return {
+        ...state,
+        shouldShowSortMenu: !state.shouldShowSortMenu,
+      };
+    })
+    .addCase(
+      setRepoSortingMethod,
+      (state, action: PayloadAction<app.RepoSortingMethod>) => {
+        return {
+          ...state,
+          sortingMethod: action.payload,
+        };
+      },
+    ),
 );
