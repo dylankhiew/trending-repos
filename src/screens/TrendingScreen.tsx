@@ -14,7 +14,10 @@ import { useSelector } from 'react-redux';
 
 import { NavigationStackParamList } from '../../App';
 import { IMAGES } from '../../assets/IMAGES';
-import { requestRepoUpdate } from '../actions/reposActions';
+import {
+  requestRepoUpdate,
+  toggleDisplaySortMenu,
+} from '../actions/reposActions';
 import AccordionBody from '../components/AccordionBody';
 import AccordionHead from '../components/AccordionHead';
 import AccordionHeadSkeleton from '../components/AccordionHeadSkeleton';
@@ -22,13 +25,15 @@ import ErrorModule from '../components/ErrorModule';
 import HeaderButton from '../components/HeaderButton';
 import RefreshIcon from '../components/RefreshIcon';
 import SkeletonLoadingModule from '../components/SkeletonLoadingModule';
+import TrendingRepoSortMenu from '../components/TrendingRepoSortMenu';
 import { COLOR } from '../constants/colorConstants';
 import { SPACING } from '../constants/spacingConstants';
 import { TRENDING_SCREEN_CONFIG } from '../constants/trendingScreenConstants';
 import {
   repoIsErrorSelector,
   repoIsLoadingSelector,
-  trendingReposSelector,
+  shouldShowSortMenuSelector,
+  sortedTrendingReposSelector,
 } from '../selectors/reposSelectors';
 import { useReduxDispatch } from '../state/store';
 
@@ -38,9 +43,10 @@ type TrendingScreenProps = NativeStackScreenProps<
 >;
 
 export default function TrendingScreen({ navigation }: TrendingScreenProps) {
-  const repositories = useSelector(trendingReposSelector);
+  const repositories = useSelector(sortedTrendingReposSelector);
   const isLoading = useSelector(repoIsLoadingSelector);
   const isError = useSelector(repoIsErrorSelector);
+  const shouldShowSortMenu = useSelector(shouldShowSortMenuSelector);
 
   const dispatch = useReduxDispatch();
 
@@ -57,7 +63,10 @@ export default function TrendingScreen({ navigation }: TrendingScreenProps) {
 
     navigation.setOptions({
       headerRight: () => (
-        <HeaderButton imageSource={IMAGES.ICON.MORE_OPTIONS} />
+        <HeaderButton
+          imageSource={IMAGES.ICON.MORE_OPTIONS}
+          onPress={() => dispatch(toggleDisplaySortMenu())}
+        />
       ),
       headerTitleStyle: styles.header,
     });
@@ -103,6 +112,12 @@ export default function TrendingScreen({ navigation }: TrendingScreenProps) {
     return <AccordionBody repository={repo} />;
   };
 
+  const renderSortMenu = () => {
+    if (shouldShowSortMenu) {
+      return <TrendingRepoSortMenu />;
+    }
+  };
+
   const renderRefreshIcon = () => {
     if (shouldShowRefreshIcon) {
       return <RefreshIcon />;
@@ -138,6 +153,7 @@ export default function TrendingScreen({ navigation }: TrendingScreenProps) {
 
   return (
     <View style={styles.container}>
+      {renderSortMenu()}
       <StatusBar style="auto" />
       {renderRefreshIcon()}
       <AccordionList
